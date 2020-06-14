@@ -1,0 +1,32 @@
+main: com.watzvictor1.MainClass
+name: Reinos
+version: '1.0'
+description: Reinos es un plugin que expande la jugabilidad de Minecraft añadiendo la simluacion de la creacion de un reino añadiendo un sistema politico, economico y social.
+#load: POSTWORLD
+author: WATZ_VICTOR
+#website: spigotmc.org
+prefix: Reinos
+#depend:
+#- WorldEdit
+#- Towny
+#softdepend:
+#- FAWE
+#loadbefore:
+#- Essentials
+commands:
+ Reinos:
+  description: Comando raiz. Con el puedes crear, eliminar y modificar diferentes parámetros del plugin.
+  aliases:
+   - reinos
+   - r
+  permission: Reinos
+  permission-message: Permisos insuficientes.
+permissions:
+ Reinos:
+  description: Comando base del plugin.
+  default: true
+ Reinos.*:
+  description: Permisos globales. Como Homer con el pase de ACCESO COMPLETO.
+  default: op
+  children:
+   Reinos: true
