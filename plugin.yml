@@ -1,11 +1,11 @@
-main: com.watzvictor1.MainClass
-name: Reinos
+main: com.watzvictor1.MainNations
+name: Nations
 version: '1.0'
-description: Reinos es un plugin que expande la jugabilidad de Minecraft aÃ±adiendo la simluacion de la creacion de un reino aÃ±adiendo un sistema politico, economico y social.
+description: Nations es un plugin que expande la jugabilidad de Minecraft añadiendo la simluacion de la creacion de un reino añadiendo un sistema politico, económico y social.
 #load: POSTWORLD
 author: WATZ_VICTOR
 #website: spigotmc.org
-prefix: Reinos
+prefix: Nations
 #depend:
 #- WorldEdit
 #- Towny
@@ -14,8 +14,8 @@ prefix: Reinos
 #loadbefore:
 #- Essentials
 commands:
- Reinos:
-  description: Comando raiz. Con el puedes crear, eliminar y modificar diferentes parÃ¡metros del plugin.
+ Nations:
+  description: Comando raiz. Con el puedes crear, eliminar y modificar diferentes parámetros del plugin.
   aliases:
    - reinos
    - r
