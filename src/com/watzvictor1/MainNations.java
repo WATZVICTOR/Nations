@@ -10,9 +10,11 @@ import com.watzvictor1.language.Messages;
 
 public class MainNations extends JavaPlugin {
 	
+	public static JavaPlugin INSTANCE;
 	
 	@Override
 	public void onEnable() {
+		INSTANCE = this;
 		initLanguage();
 		registerCommands();
 	}
