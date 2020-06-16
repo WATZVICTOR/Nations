@@ -46,7 +46,7 @@ public class Model {
 	
 	public static boolean setPlayerNation(Player player, Nation nation) {
 		// We chech if the player is already a member of a Nation.
-		if (!hasPlayerNation(player)) return false;
+		if (hasPlayerNation(player)) return false;
 		// We create the metadata, in this case the name of the nation that we want to give to the player.
 		MetadataValue nation_metadata = new FixedMetadataValue(MainNations.INSTANCE, nation.getName());
 		// We set the metadata inside the player, so we can check the Nation of the player.

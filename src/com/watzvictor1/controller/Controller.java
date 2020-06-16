@@ -59,15 +59,25 @@ public class Controller {
 					}
 					// Create the Nation
 					Nation new_Nation = new Nation(nation_name, player);
-					// A
+					// Add the new Nation to the list of exisitng Nations on the server.
+					Model.addNation(new_Nation);
+					// Add the Metadata of the nation to the player.
+					Model.setPlayerNation(player, new_Nation);
+					// END TRUE
+					player.sendMessage(MSG.getString("NATION_CREATED"));
 				// FALSE: we create a Nation using NULL as Leader and Founder.
 				} else {
-					
-					
-					/*
-					 * IMPLEMENTAR
-					 */
-					
+					// Check if there is already a Nation with that name.
+					if (Model.containsNation(nation_name)) {
+						cs.sendMessage(MSG.getString("DUPLICATED_NATION"));
+						return true;
+					}
+					// Create the Nation
+					Nation new_Nation = new Nation(nation_name, null);
+					// Add the new Nation to the list of exisitng Nations on the server.
+					Model.addNation(new_Nation);
+					// END FALSE
+					cs.sendMessage(MSG.getString("NATION_CREATED"));
 				}
 		return false;
 	}

@@ -43,6 +43,10 @@ public class Nation {
 		return null;
 	}
 	
+	public boolean addMember(Player new_member) {
+		return Members.add(new_member)
+	}
+	
 	public String getName() {
 		return Name;
 	}
