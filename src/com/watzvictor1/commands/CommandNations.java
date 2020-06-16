@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.watzvictor1.controller.Controller;
+import com.watzvictor1.language.Messages;
 
 public class CommandNations implements CommandExecutor {
 
@@ -12,7 +13,8 @@ public class CommandNations implements CommandExecutor {
 	public boolean onCommand(CommandSender cs, Command cmd, String alias, String[] arg) {
 		switch (arg.length) {
 		case 0:
-			cs.sendMessage("Menu interactivo.");
+			cs.sendMessage(Messages.MESSAGES.getString("NO_PERMISSION"));
+			return true;
 		case 1:
 			return Command_1_args(cs, cmd, alias, arg[0]);
 		case 2:

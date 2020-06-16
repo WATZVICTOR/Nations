@@ -23,7 +23,8 @@ public class MainNations extends JavaPlugin {
 		this.getCommand("Nations").setExecutor(new CommandNations());
 	}
 	
+	
 	private void initLanguage() {
-		Messages.MESSAGES = ResourceBundle.getBundle("MessageBundle", new Locale("es"));
+		Messages.MESSAGES = ResourceBundle.getBundle("com.watzvictor1.language/messages", new Locale("en"));
 	}
 }

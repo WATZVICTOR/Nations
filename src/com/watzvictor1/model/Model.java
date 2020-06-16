@@ -2,6 +2,7 @@ package com.watzvictor1.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -31,15 +32,33 @@ public class Model {
 		return null;
 	}
 	
+	public static boolean containsNation(String nation_name) {
+		return NATIONS.contains(getNation(nation_name));
+	}
+	
+	public static boolean removeNation(String nation_name) {
+		return NATIONS.remove(getNation(nation_name));
+	}
+	
 	public static boolean hasPlayerNation(Player player) {
 		return player.hasMetadata(METADATA_KEY) ? true : false;
 	}
 	
 	public static boolean setPlayerNation(Player player, Nation nation) {
+		// We chech if the player is already a member of a Nation.
+		if (!hasPlayerNation(player)) return false;
 		// We create the metadata, in this case the name of the nation that we want to give to the player.
 		MetadataValue nation_metadata = new FixedMetadataValue(MainNations.INSTANCE, nation.getName());
-		// We set the metadata inside the player, so we can check if we need the Nation of the player without any more features.
+		// We set the metadata inside the player, so we can check the Nation of the player.
 		player.setMetadata(METADATA_KEY, nation_metadata);
+		return true;
+	}
+	
+	public static boolean removePlayerNation(Player player) {
+		// We check if the player is already a member of a Nation.
+		if (!hasPlayerNation(player)) return false;
+		// Now we remove the nation metadata from the player.
+		player.removeMetadata(METADATA_KEY, MainNations.INSTANCE);
 		return true;
 	}
 	

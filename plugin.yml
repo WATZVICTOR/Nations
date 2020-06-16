@@ -1,7 +1,7 @@
 main: com.watzvictor1.MainNations
 name: Nations
-version: '1.0'
-description: Nations es un plugin que expande la jugabilidad de Minecraft añadiendo la simluacion de la creacion de un reino añadiendo un sistema politico, económico y social.
+version: '0.1'
+description: Nations let your server become a warfare letting player to create Nations to figth for the leadership of the world.
 #load: POSTWORLD
 author: WATZ_VICTOR
 #website: spigotmc.org
@@ -15,18 +15,19 @@ prefix: Nations
 #- Essentials
 commands:
  Nations:
-  description: Comando raiz. Con el puedes crear, eliminar y modificar diferentes parámetros del plugin.
+  description: Root Command. You can edit and manae all the features of the plugin with this command.
   aliases:
-   - reinos
-   - r
-  permission: Reinos
-  permission-message: Permisos insuficientes.
+   - nations
+   - nation
+   - n
+  permission: Nations
+  permission-message: Not enough permissions.
 permissions:
- Reinos:
-  description: Comando base del plugin.
+ Nations:
+  description: Permission to execute the root command.
   default: true
- Reinos.*:
-  description: Permisos globales. Como Homer con el pase de ACCESO COMPLETO.
-  default: op
-  children:
-   Reinos: true
+# Nations.*:
+#  description: Permisos globales. Como Homer con el pase de ACCESO COMPLETO.
+#  default: op
+#  children:
+#   Reinos: true
