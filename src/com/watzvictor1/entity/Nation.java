@@ -2,127 +2,111 @@ package com.watzvictor1.entity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Nation {
-	String nombre;
-	Player fundador;
-	Player lider;
-	ArrayList<Player> miembros;
-	Location nexo;
-	ArrayList<Nation> enemigos;
-	ArrayList<Nation> aliados;
 	
-	public Nation(String nombre, Player fundador) {
-		
-		this.nombre = nombre;
-		this.fundador = fundador;
-		this.lider = fundador;
-		this.miembros = new ArrayList<Player>();
-		this.nexo = new Location(null,0, 0, 0);
-		this.enemigos = new ArrayList<Nation>();
-		this.aliados = new ArrayList<Nation>();
-		miembros.add(fundador);
-		
+	String Name;
+	Player Founder;
+	Player Leader;
+	List<Player> Members;
+	Location Capital;
+	List<Nation> Enemies;
+	List<Nation> Allies;
+	
+	public Nation(String name, Player founder) {
+		this.Name = name;
+		this.Founder = founder;
+		this.Leader = founder;
+		this.Members = new ArrayList<Player>();
+		this.Members.add(founder);
+		this.Capital = null;
+		this.Enemies = new ArrayList<Nation>();
+		this.Allies = new ArrayList<Nation>();
+	}
+
+	public Player getMember(String name) {
+		for (Player member : Members) {
+			if (member.getName().equalsIgnoreCase(name)) return member; 
+		}
+		return null;
 	}
 	
-	
-	/**
-	 * 
-	 * @param nombre
-	 * @return Player con el nombre $nombre y Null si no se encuentra el jugador en la lista de miembros.
-	 */
-	public Player getMiembro(String nombre) {
-		Player miembro = null;
-		Iterator<Player> itr = miembros.iterator();
-		while (itr.hasNext()) {
-			Player aux = itr.next();
-			if (aux.getName().equalsIgnoreCase(nombre)) miembro = aux;
+	public Player getMember(UUID uuid) {
+		for (Player member : Members) {
+			if (member.getUniqueId().compareTo(uuid) == 0) return member; 
 		}
-		return miembro;
+		return null;
 	}
 	
-	/**
-	 * @param uuid
-	 * @return
-	 */
-	public Player getMiembro(UUID uuid) {
-		Player miembro = null;
-		Iterator<Player> itr = miembros.iterator();
-		while (itr.hasNext()) {
-			Player aux = itr.next();
-			if (aux.getUniqueId().equals(uuid)) miembro = aux;
-		}
-		return miembro;
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public Player getFounder() {
+		return Founder;
+	}
+
+	public void setFounder(Player founder) {
+		Founder = founder;
+	}
+
+	public Player getLeader() {
+		return Leader;
+	}
+
+	public void setLeader(Player leader) {
+		Leader = leader;
+	}
+
+	public List<Player> getMembers() {
+		return Members;
+	}
+
+	public void setMembers(List<Player> members) {
+		Members = members;
+	}
+
+	public Location getCapital() {
+		return Capital;
+	}
+
+	public void setCapital(Location capital) {
+		Capital = capital;
+	}
+
+	public List<Nation> getEnemies() {
+		return Enemies;
+	}
+
+	public void setEnemies(List<Nation> enemies) {
+		Enemies = enemies;
+	}
+
+	public List<Nation> getAllies() {
+		return Allies;
+	}
+
+	public void setAllies(List<Nation> allies) {
+		Allies = allies;
 	}
 
 	@Override
 	public String toString() {
-		return "\nReino: " + nombre
-				+ "\nFundador: " + fundador.getName()
-				+ "\nLider: " + lider.getName()
-				+ "\nNexo: " + nexo.toString()
-				+ "\nEnemigos: " + enemigos.toString()
-				+ "\nAliados: " + aliados.toString();
+		return "\nNation: " + this.Name
+				+ "\nFounder: " + this.Founder.getName()
+				+ "\nLeader: " + this.Leader.getName()
+				+ "\nCapital: " + this.Capital.toString()
+				+ "\nEnemies: " + this.Enemies.toString()
+				+ "\nAllies: " + this.Allies.toString();
 	}
 	
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Player getFundador() {
-		return fundador;
-	}
-
-	public void setFundador(Player fundador) {
-		this.fundador = fundador;
-	}
-
-	public Player getLider() {
-		return lider;
-	}
-
-	public void setLider(Player lider) {
-		this.lider = lider;
-	}
-
-	public ArrayList<Player> getMiembros() {
-		return miembros;
-	}
-
-	public void setMiembros(ArrayList<Player> miembros) {
-		this.miembros = miembros;
-	}
-
-	public Location getNexo() {
-		return nexo;
-	}
-
-	public void setNexo(Location nexo) {
-		this.nexo = nexo;
-	}
-
-	public ArrayList<Nation> getEnemigos() {
-		return enemigos;
-	}
-
-	public void setEnemigos(ArrayList<Nation> enemigos) {
-		this.enemigos = enemigos;
-	}
-
-	public ArrayList<Nation> getAliados() {
-		return aliados;
-	}
-
-	public void setAliados(ArrayList<Nation> aliados) {
-		this.aliados = aliados;
-	}
 }
