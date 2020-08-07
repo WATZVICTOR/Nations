@@ -39,8 +39,13 @@ public class Controller {
 	
 	public static boolean createNation(CommandSender cs, String nation_name) {
 		// Check if the CommandSender has permissions.
-				if (!cs.hasPermission("list")) {
+				if (!cs.hasPermission("create_Nation")) {
 					cs.sendMessage(MSG.getString("NO_PERMISSION"));
+					return true;
+				}
+				// Check if there is already a Nation with that name.
+				if (Model.containsNation(nation_name)) {
+					cs.sendMessage(MSG.getString("DUPLICATED_NATION"));
 					return true;
 				}
 				// Check if the CommandSender is a Player or not.
@@ -50,11 +55,6 @@ public class Controller {
 					// Check if the Player is already a member of a Nation.
 					if (Model.hasPlayerNation(player)) {
 						cs.sendMessage(MSG.getString("INSIDE_NATION"));
-						return true;
-					}
-					// Check if there is already a Nation with that name.
-					if (Model.containsNation(nation_name)) {
-						cs.sendMessage(MSG.getString("DUPLICATED_NATION"));
 						return true;
 					}
 					// Create the Nation
@@ -67,11 +67,6 @@ public class Controller {
 					player.sendMessage(MSG.getString("NATION_CREATED"));
 				// FALSE: we create a Nation using NULL as Leader and Founder.
 				} else {
-					// Check if there is already a Nation with that name.
-					if (Model.containsNation(nation_name)) {
-						cs.sendMessage(MSG.getString("DUPLICATED_NATION"));
-						return true;
-					}
 					// Create the Nation
 					Nation new_Nation = new Nation(nation_name, null);
 					// Add the new Nation to the list of exisitng Nations on the server.
